@@ -20,7 +20,8 @@
   #game{width:min(100vw,calc((100svh - 150px) * 1.5));max-width:620px;aspect-ratio:3/2;image-rendering:pixelated;
     background:#000;border:3px solid #3e5a3e;border-radius:6px;box-sizing:border-box;display:block;}
   #pad{display:flex;justify-content:space-between;align-items:center;
-    width:min(100vw,620px);padding:4px 12px 2px;box-sizing:border-box;touch-action:none;height:128px;}
+    width:min(100vw,620px);padding:4px 12px 2px;box-sizing:border-box;touch-action:none;
+    flex:1 1 auto;min-height:128px;max-height:320px;}
   #dpad{display:grid;grid-template-areas:". u ." "l c r" ". d .";
     grid-template-columns:40px 40px 40px;grid-template-rows:40px 40px 40px;gap:2px;}
   .db{background:#2c452c;color:#9fe3a0;border:2px solid #527a52;border-radius:8px;font-size:16px;touch-action:none;}
@@ -344,6 +345,41 @@ gaki:{c:{r:'#b83838',d:'#781818',y:'#f0c020',k:'#222',w:'#f8f8f8'},r:[
 ".y..y..y..y.....",".ry.ry.ry.ry...","..rrrrrrrrrr...","..rrrrrrrrrr...",
 ".rwkrrrrkwr....",".rrrrrrrrrr....",".rryyyyyyrr....",".rrrrrrrrrr....","rrrrrrrrrrrr...",
 "rrdrrrrrrdrr...",".rrrrrrrrrr....","..rr.rr.rr.....","..rr.rr.rr.....",".rr..rr..rr....","rr...rr...rr...","................"]},
+ishigo:{c:{s:'#9a8a6a',d:'#5e5038',k:'#222',w:'#f0f0f0',o:'#c0a868'},r:[
+"................","....ssssss......","..ssssssssss....",".ssssssssssss...",
+".sskssssksss...s","ssssssssssss..ss","ssoosssssooss.s.","ssssssssssss....",
+".ssssssssssss...","ssdsssssssdss...","sssssssssssss...","ss.ssssssss.s...",
+".s..ssssss..s...","....dd..dd......","...dd....dd.....","................"]},
+ishido:{c:{s:'#8a7e5e',d:'#4e4228',k:'#222',w:'#f0f0f0',o:'#b89850'},r:[
+"...ssss..ssss...","..ssssssssssss..",".sssssssssssss.s","ssskssssssksssss",
+"sssssssssssssss.","ssoossssssoosss.","sssssssssssssss.","ssssooooosssss..",
+"sssssssssssssss.","sddssssssssddss.","ssssssssssssss..","sss.ssssss.sss..",
+"ss..ssssssss..s.","s..dd......dd...","..dd........dd..",".d............d."]},
+kazeta:{c:{b:'#5878c0',d:'#2a4890',w:'#f0f0f8',y:'#f0c040',k:'#222'},r:[
+".......yy.......","......ybby......",".....bbbbbb.....","....bbwbbwbb....",
+"...bbkbbbbkbb...","..bbbbbbbbbbbb..","..bbyyyyyybbb...","bbbbbbbbbbbbbb..",
+"bbdbbbbbbbbdbb..",".bbbbbbbbbbbb...","..bbb.bb.bbb....","...bb.bb.bb.....",
+"...b..bb..b.....","..bb..bb..bb....","yy........yy....","................"]},
+denki:{c:{y:'#f0d040',d:'#c89818',k:'#222',w:'#f8f8f8',o:'#f08828'},r:[
+"..y..........y..","..yy........yy..","...yy.yyyy.yy...","....yyyyyyyy....",
+"...yyykyykyyy...","..yyyyyyyyyyyy..","..yywyyyyyywy...","yyyyyyyyyyyyyy..",
+".yyoyyyyyyoyy...","..yyyyyyyyyy....","..yy.yyyy.yy....","..y...yy...y....",
+".yy...yy...yy...","yy....yy....yy..","y.....yy.....y..","................"]},
+denrai:{c:{y:'#f0c828',d:'#b88810',k:'#222',w:'#f8f8f8',o:'#e87020'},r:[
+".y...........y..","yy....yyyy....yy",".yy.yyyyyyyy.yy.","..yyyykyykyyyy..",
+".yyyyyyyyyyyyyy.","yyyyyyyyyyyyyyyy","yywwyyyyyyyywwy.","yyyyooooooyyyy..",
+"yyyyyyyyyyyyyyy.",".yyoyyyyyyyyoyy.","..yyyyyyyyyyyy..","..yyy.yyyy.yyy..",
+".yy...yy.yy...yy","yy....yy.yy....y","y....yy...yy...y","....dd.....dd..."]},
+sorapa:{c:{b:'#7aa8e0',d:'#4878b0',w:'#f0f8ff',y:'#f0c040',k:'#222'},r:[
+"......yy........","....bbyybb......","...bbbbbbbb.....","..bbwbbbbwbb....",
+"..bbkbbbbkbb....",".bbbbbbbbbbbb...",".bbyyyyyybbb...b","bbbbbbbbbbbbb.bb",
+"bbdbbbbbbbbbbbb.",".bbbbbbbbbbbb...","..bbb.bb.bbb....","...b..bb..b.....",
+"..bb..bb..bb....",".bb...bb...bb...","yy....yy....yy..","................"]},
+sorao:{c:{b:'#4a80d0',d:'#284e98',w:'#eaf2ff',y:'#f0b820',k:'#222'},r:[
+"y...yy..yy...y..","by.bbyybyy.b.b..","bbbbbbbbbbbbbb..","bbwbbbbbbbbwbb.b",
+"bbkbbbbbbbbkbb.b","bbbbbbbbbbbbbbbb","bbbyyyyyyybbbb..","bbbbbbbbbbbbbb..",
+"bbdbbbbbbbbbdbb.",".bbbbbbbbbbbbb..","..bbbbbbbbbbb...","..bbb.bb.bbb....",
+".bbb..bb..bbb...","bbb...bb...bbb..","yy....yy....yy..","y............y.."]},
 hero:{c:{r:'#e04038',s:'#f8c8a0',b:'#3858c0',k:'#222',w:'#f8f8f8',a:'#f0bc94'},r:[
 ".....rrrrrr.....","....rrrrrrrr....","....ssssssss....","....skssssks....",
 "....ssssssss....",".....ssssss.....","....bbbbbbbb....","...sbbbbbbbbs...",
@@ -770,7 +806,70 @@ gaki:[
 ".rrrrrrrrrrrrrrrrrrrrrr.........","rrrrrrrrrrrrrrrrrrrrrrrr........","rrrrddrrrrrrrrrrrrddrrrr........",".rrrddrrrrrrrrrrrrddrrr.........",
 ".rrrrrrrrrrrrrrrrrrrrrr.........","...rrrrrrrrrrrrrrrrrr...........","...rrrrr..rrrr..rrrrr...........","....rrrr..rrrr..rrrr............",
 "....rrrr..rrrr..rrrr............","...rrrr...rrrr...rrrr...........","...rrrr...rrrr...rrrr...........",".rrrr.....rrrr.....rrrr.........",
-"rrrrr.....rrrr.....rrrrr........","rrr........rr........rrr........","................................","................................"]
+"rrrrr.....rrrr.....rrrrr........","rrr........rr........rrr........","................................","................................"],
+ishigo:[
+"................................","................................",".........ssssssssss.............",".......ssssssssssssss...........",
+".....ssssssssssssssssss.........","...ssssssssssssssssssssss.......","...sssssssssssssssssssssss......","..ssssssssssssssssssssssss......",
+"..sssskksssssssskksssssss.....ss",".ssssskksssssssskkssssss.....sss",".sssssssssssssssssssssss.....sss","sssssssssssssssssssssssss...sss.",
+"ssssoooossssssssssoooossss..sss.","ssssoooossssssssssoooossss..ss..","ssssssssssssssssssssssss........",".sssssssssssssssssssssss........",
+"..sssssssssssssssssssssss.......","..ssssssssssssssssssssssss......",".sssddssssssssssssssddssss......","ssssddssssssssssssssddssss......",
+"ssssssssssssssssssssssssss......","ssssssssssssssssssssssssss......","ssss..ssssssssssssssss..ss......",".sss...ssssssssssssss...ss......",
+".sss...ssssssssssssss...ss......","..ss....ssssssssssss....ss......","........dddd....dddd............",".......dddd......dddd...........",
+"......ddddd......ddddd..........","......ddd..........ddd..........","................................","................................"],
+ishido:[
+".......ssssss......ssssss.......",".....ssssssssss..ssssssssss.....",".....ssssssssssssssssssssss.....","...sssssssssssssssssssssssss....",
+"...sssssssssssssssssssssssss..ss",".sssssssssssssssssssssssssss..ss",".ssssskksssssssssssskkssssssssss","sssssskksssssssssssskksssssssss.",
+"sssssssssssssssssssssssssssssss.","ssssssssssssssssssssssssssssss..","ssssoooossssssssssssoooossssss..","ssssoooossssssssssssoooossssss..",
+"ssssssssssssssssssssssssssssss..","sssssssssssssssssssssssssssss...","ssssssssoooooooooossssssssss....","ssssssssoooooooooossssssssss....",
+"sssssssssssssssssssssssssssss...","ssssssssssssssssssssssssssssss..","ssddddssssssssssssssssddddssss..","ssddddssssssssssssssssddddsss...",
+"sssssssssssssssssssssssssssss...","ssssssssssssssssssssssssssss....","ssssss..ssssssssssss..ssssss....","sssss...ssssssssssss..sssss.s...",
+"sssss...sssssssssssssssss..sss..","sss.....ssssssssssssssss....ss..","sss....ddd............ddd.......","ss...dddd..............dddd.....",
+"....ddddd..............ddddd....","...dddd..................dddd...","..ddd......................ddd..","..dd........................dd.."],
+kazeta:[
+"...............yy...............",".............yyyyyy.............",".............yybbyy.............","............ybbbbbby............",
+"...........bbbbbbbbbb...........",".........bbbbbbbbbbbbbb.........",".........bbbwwbbbbwwbbb.........",".......bbbbbwwbbbbwwbbbbb.......",
+".......bbbkkbbbbbbbbkkbbb.......",".....bbbbbkkbbbbbbbbkkbbbbb.....",".....bbbbbbbbbbbbbbbbbbbbbbb....","....bbbbbbbbbbbbbbbbbbbbbbbb....",
+"....bbbbyyyyyyyyyyyybbbbbb......","...bbbbbyyyyyyyyyyyybbbbbb......",".bbbbbbbbbbbbbbbbbbbbbbbbbb.....","bbbbbbbbbbbbbbbbbbbbbbbbbbbb....",
+"bbbbddbbbbbbbbbbbbbbbbddbbbb....",".bbbddbbbbbbbbbbbbbbbbddbbb.....",".bbbbbbbbbbbbbbbbbbbbbbbbbb.....","...bbbbbbbbbbbbbbbbbbbbbb.......",
+"...bbbbbbb..bbbb..bbbbbbb.......",".....bbbbb..bbbb..bbbbb.........",".....bbbbb..bbbb..bbbbb.........","......bbb...bbbb...bbb..........",
+"......bbb...bbbb...bbb..........",".....bbb....bbbb....bbb.........","....bbbb....bbbb....bbb.........","....bbb......bb.....bbbb........",
+"yyyy................yyyy........","yyyy.................yy.........","................................","................................"],
+denki:[
+"....yy....................yy....","....yyy..................yyy....","....yyy..................yyy....",".....yyyy..............yyyy.....",
+".....yyyy....yyyyyy....yyyy.....",".......yyy..yyyyyyyy..yyy.......","........yyyyyyyyyyyyyyyy........","........yyyyyyyyyyyyyyyy........",
+".......yyyyykkyyyykkyyyyy.......",".....yyyyyyykkyyyykkyyyyyyy.....",".....yyyyyyyyyyyyyyyyyyyyyyy....","....yyyyyyyyyyyyyyyyyyyyyyyy....",
+"....yyyywwyyyyyyyyyyyywwyy......","...yyyyywwyyyyyyyyyyyywwyy......","yyyyyyyyyyyyyyyyyyyyyyyyyyyy....","yyyyyyyyyyyyyyyyyyyyyyyyyyyy....",
+".yyyyyooyyyyyyyyyyyyooyyyyy.....","...yyyooyyyyyyyyyyyyooyyy.......","...yyyyyyyyyyyyyyyyyyyyyy.......","....yyyyyyyyyyyyyyyyyyyy........",
+"....yyyy..yyyyyyyy..yyyy........","....yyy....yyyyyy....yyy........","....yyy....yyyyyy....yyy........","...yyy......yyyy......yyy.......",
+"...yyy......yyyy......yyy.......",".yyyy.......yyyy.......yyyy.....",".yyyy.......yyyy.......yyyy.....","yyy.........yyyy.........yyy....",
+"yyy.........yyyy.........yyy....","yy...........yy...........yy....","................................","................................"],
+denrai:[
+"..yy......................yy....",".yyy......................yyy...","yyyy.........yyyyyy..........yyy","yyyyy......yyyyyyyyyy.......yyyy",
+".yyyy....yyyyyyyyyyyyyy....yyyy.","...yyy..yyyyyyyyyyyyyyyy..yyy...","....yyyyyyyykkyyyykkyyyyyyyy....","....yyyyyyyykkyyyykkyyyyyyyy....",
+"...yyyyyyyyyyyyyyyyyyyyyyyyyy...",".yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy.",".yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy","yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy",
+"yyyywwwwyyyyyyyyyyyyyyyywwwwyyy.","yyyywwwwyyyyyyyyyyyyyyyywwwwy...","yyyyyyyyooooooooooooyyyyyyyy....","yyyyyyyyooooooooooooyyyyyyyy....",
+"yyyyyyyyyyyyyyyyyyyyyyyyyyyyy...",".yyyyyyyyyyyyyyyyyyyyyyyyyyyyy..",".yyyyyooyyyyyyyyyyyyyyyyooyyyy..","...yyyooyyyyyyyyyyyyyyyyooyyy...",
+"...yyyyyyyyyyyyyyyyyyyyyyyyyy...","....yyyyyyyyyyyyyyyyyyyyyyyy....","....yyyyyy..yyyyyyyy..yyyyyy....","...yyyyyy...yyyyyyyy...yyyy.y...",
+"...yyyy.....yyyy..yyy.y....yyyy.",".yyyy.......yyyy..yyyy......yyyy",".yyyy.......yyyy..yyyy.......yyy","yyy........yyyy....yyyy.......yy",
+"yyy........yyyy....yyyy.......yy","yy........yyy........yyy......yy","........dddd..........dddd......","........ddd............ddd......"],
+sorapa:[
+".............yy.................","............yyyy................",".........bbbyyyybbb.............",".......bbbbbbyybbbbbb...........",
+".......bbbbbbbbbbbbbb...........",".....bbbbbbbbbbbbbbbbbb.........",".....bbbwwbbbbbbbbwwbbb.........","....bbbbwwbbbbbbbbwwbbbb........",
+"....bbbbkkbbbbbbbbkkbbbb........","...bbbbbkkbbbbbbbbkkbbbbb.......","...bbbbbbbbbbbbbbbbbbbbbbb......","..bbbbbbbbbbbbbbbbbbbbbbbb......",
+"..bbbbyyyyyyyyyyyybbbbbb......bb",".bbbbbyyyyyyyyyyyybbbbbb.....bbb",".bbbbbbbbbbbbbbbbbbbbbbbb....bbb","bbbbbbbbbbbbbbbbbbbbbbbbbb..bbb.",
+"bbbbddbbbbbbbbbbbbbbbbbbbbbbbbb.",".bbbddbbbbbbbbbbbbbbbbbbbbbbb...",".bbbbbbbbbbbbbbbbbbbbbbbbbb.....","...bbbbbbbbbbbbbbbbbbbbbb.......",
+"...bbbbbbb..bbbb..bbbbbbb.......",".....bbbb...bbbb...bbbb.........","......bbb...bbbb...bbb..........","......bb....bbbb....bb..........",
+".....bbb....bbbb....bbb.........","...bbbb.....bbbb.....bbbb.......","...bbbb.....bbbb.....bbbb.......","..bbb.......bbbb.......bbb......",
+"yyyy........yyyy........yyyy....","yyy..........yy..........yyy....","................................","................................"],
+sorao:[
+"yy.......yy......yy.......yy....","yyy.....yyyyy...yyyy......yy....","byy....bbyyyyybbyyyy..bb..bb....","bbby.bbbbbbyybbbbyyy.bbb..bb....",
+"bbbbbbbbbbbbbbbbbbbbbbbbbbbb....","bbbbbbbbbbbbbbbbbbbbbbbbbbbb....","bbbbwwbbbbbbbbbbbbbbbbwwbbbb..bb","bbbbwwbbbbbbbbbbbbbbbbwwbbbb..bb",
+"bbbbkkbbbbbbbbbbbbbbbbkkbbbb..bb","bbbbkkbbbbbbbbbbbbbbbbkkbbbb..bb","bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb.",
+"bbbbbbyyyyyyyyyyyyyybbbbbbbbb...","bbbbbbyyyyyyyyyyyyyybbbbbbbb....","bbbbbbbbbbbbbbbbbbbbbbbbbbbb....","bbbbbbbbbbbbbbbbbbbbbbbbbbbbb...",
+"bbbbddbbbbbbbbbbbbbbbbbbddbbbb..",".bbbddbbbbbbbbbbbbbbbbbbddbbbb..",".bbbbbbbbbbbbbbbbbbbbbbbbbbbb...","...bbbbbbbbbbbbbbbbbbbbbbbb.....",
+"...bbbbbbbbbbbbbbbbbbbbbbbb.....","....bbbbbbbbbbbbbbbbbbbbb.......","....bbbbbb..bbbb..bbbbbb........","...bbbbbb...bbbb...bbbbb........",
+"...bbbbbb...bbbb...bbbbbb.......",".bbbbbb.....bbbb.....bbbbbb.....",".bbbbbb.....bbbb.....bbbbbb.....","bbbbb.......bbbb.......bbbbb....",
+"yyyy........yyyy........yyyy....","yyy..........yy..........yyy....","yyy......................yyy....","yy........................yy...."]
 };
 const _shadeCache={};
 function shade(col,f){
@@ -815,7 +914,9 @@ function epxN(rows){
 const _C64={};
 function spr64(key){if(!_C64[key])_C64[key]=epxN(MSPR32[key]);return _C64[key];}
 const _H64={};
-function heroFrame64(key,fr){const id=key+fr;if(!_H64[id])_H64[id]=epxN(heroFrames(key)[fr]);return _H64[id];}
+function heroKey(dir){return dir==='up'?'up':(dir==='left'||dir==='right')?'side':'down';}
+function heroFrame64(key,fr,girl){const set=girl?HEROF:HERO;const id=(girl?'g':'b')+key+fr;
+  if(!_H64[id])_H64[id]=epxN(epx16(set[key][fr]));return _H64[id];}
 /* NxN行配列を 自動輪郭+なめらかな陰影で描画 */
 function drawBig(rows,c,x,y,sc,flip,outline){
   const N=rows.length,p=sc*16/N;
@@ -892,6 +993,10 @@ const TYPECOL={'ほのお':'#e06038','みず':'#4890e0','くさ':'#56a843','で�
 /* fx: 追加効果 {s:状態, c:確率%} / stat: 相手能力変化 / self: 自分能力変化 */
 const MOVES={
  'たいあたり':{t:'ノーマル',pow:40,acc:100,pp:35},
+ 'ぼうふう':{t:'ひこう',pow:110,acc:70,pp:10},
+ 'まるくなる':{t:'ノーマル',pow:0,acc:100,pp:40},
+ 'ころがる':{t:'いわ',pow:50,acc:90,pp:20},
+ 'かみなりのキバ':{t:'でんき',pow:65,acc:95,pp:15,fx:{s:'PAR',c:10}},
  'ひっかく':{t:'ノーマル',pow:40,acc:100,pp:35},
  'でんこうせっか':{t:'ノーマル',pow:40,acc:100,pp:30,pri:1},
  'かみつく':{t:'ノーマル',pow:60,acc:100,pp:25},
@@ -1101,6 +1206,20 @@ const SPECIES={
    learn:[[1,'たいあたり'],[1,'いわおとし'],[16,'がんせきふうじ'],[26,'いわなだれ'],[36,'ストーンエッジ']]},
  GAKII:{no:67,name:'ガキマル',type:'ドラゴン',spr:'gaki',base:{hp:95,atk:115,def:90,spd:100},bexp:280,catch:0.13,
    learn:[[1,'りゅうのいぶき'],[1,'いわなだれ'],[1,'だいもんじ'],[1,'ドラゴンクロー'],[1,'りゅうせいぐん']]},
+ ISHIGO:{no:68,name:'イシゴロ',type:'いわ',spr:'ishigo',base:{hp:55,atk:70,def:85,spd:35},bexp:72,catch:0.5,
+   learn:[[1,'たいあたり'],[1,'まるくなる'],[10,'いわおとし'],[18,'ころがる'],[26,'いわなだれ'],[34,'ストーンエッジ']],evo:{lv:30,to:'ISHIDO'}},
+ ISHIDO:{no:69,name:'イシドスン',type:'いわ',spr:'ishido',base:{hp:80,atk:100,def:120,spd:45},bexp:185,catch:0.18,
+   learn:[[1,'たいあたり'],[1,'まるくなる'],[10,'いわおとし'],[18,'ころがる'],[26,'いわなだれ'],[34,'ストーンエッジ']]},
+ KAZETA:{no:70,name:'カゼタカ',type:'ひこう',spr:'kazeta',base:{hp:65,atk:80,def:60,spd:95},bexp:165,catch:0.28,
+   learn:[[1,'つつく'],[1,'つばさでうつ'],[18,'つばさでうつ'],[26,'そらをとぶ'],[34,'エアスラッシュ']]},
+ DENKI:{no:71,name:'デンキッズ',type:'でんき',spr:'denki',base:{hp:50,atk:65,def:50,spd:75},bexp:70,catch:0.5,
+   learn:[[1,'でんきショック'],[1,'なきごえ'],[14,'でんじは'],[22,'でんきショック'],[30,'10まんボルト']],evo:{lv:30,to:'DENRAI'}},
+ DENRAI:{no:72,name:'デンライガー',type:'でんき',spr:'denrai',base:{hp:80,atk:100,def:70,spd:110},bexp:200,catch:0.14,
+   learn:[[1,'でんきショック'],[1,'なきごえ'],[14,'でんじは'],[22,'かみなりのキバ'],[30,'10まんボルト'],[40,'かみなり']]},
+ SORAPA:{no:73,name:'ソラッパ',type:'ひこう',spr:'sorapa',base:{hp:55,atk:62,def:50,spd:80},bexp:72,catch:0.45,
+   learn:[[1,'つつく'],[1,'なきごえ'],[14,'つばさでうつ'],[22,'エアスラッシュ'],[30,'そらをとぶ']],evo:{lv:32,to:'SORAO'}},
+ SORAO:{no:74,name:'ソラオウ',type:'ひこう',spr:'sorao',base:{hp:85,atk:95,def:75,spd:115},bexp:205,catch:0.13,
+   learn:[[1,'つつく'],[1,'なきごえ'],[14,'つばさでうつ'],[22,'エアスラッシュ'],[30,'そらをとぶ'],[40,'ぼうふう']]},
 
 };
 const ZUKAN_ORDER=Object.keys(SPECIES).sort((a,b)=>SPECIES[a].no-SPECIES[b].no);
@@ -1139,7 +1258,7 @@ const expFracD=m=>{const e=(m.dexp===undefined?m.exp:m.dexp);const a=m.lv**3,b=(
 
 <script>
 /* ================= マップデータ ================= */
-const MAPS={"MIDORI":{"name":"ミドリタウン","pad":"T","rows":["TTTTTTTTTTPPTTTTTTTTTT","T.........PP.........T","T..BBBB...PP...BBBB..T","T..BBBB...PP...BBBB..T","T..BBBB...PP...BBBB..T","T...S.....PP.....S...T","T.........PP.........T","T..FF..PPPPPPPP..FF..T","T......P......P......T","T..H...P..BBBBBB.....T","T......P..BBBBBB.....T","T......P..BBBBBB.....T","T......P....S........T","T......P.............T","T....................T","TTTTTTTTTTTTTTTTTTTTTT"],"warps":{"10,0":["ROUTE1",8,26],"11,0":["ROUTE1",9,26]},"enc":null,"signs":{"4,5":"ミドリタウン 「ぼうけんの はじまりの まち」","17,5":"ここは ふつうの みんか。るすの ようだ。","12,12":"コダマ モンスターけんきゅうじょ"},"items":{}},"ROUTE1":{"name":"1ばんどうろ","pad":"T","rows":["TTTTTTTTPPTTTTTTTT","T......TPPT......T","T.GGG..TPPT..GGG.T","T.GGG...PP...GGG.T","T.GGG...PP...GGG.T","T.......PP.......T","T..F....PP....F..T","T.......PP.......T","T..GGGG.PP.GGGG..T","T..GGGG.PP.GGGG..T","T..GGGG.PP.GGGG..T","T.......PP.......T","T....S..PP.......T","T.......PP.......T","T..GGG..PP..GGG..T","T..GGG..PP..GGG..T","T..GGG..PP..GGG..T","T.I.....PP.......T","T.......PP....F..T","T..F....PP.......T","T.......PP.......T","T..GGG..PP..GGG..T","T..GGG..PP..GGG..T","T.......PP.......T","T.......PP.......T","T.......PP.......T","T.......PP.......T","TTTTTTTTPPTTTTTTTT"],"warps":{"8,0":["KUSAKI",12,16],"9,0":["KUSAKI",13,16],"8,27":["MIDORI",10,1],"9,27":["MIDORI",11,1]},"enc":{"rate":0.13,"tbl":[["NEZU",2,4,3],["PATA",2,4,3],["KERA",2,4,3]]},"signs":{"5,12":"1ばんどうろ 「くさむらでは やせいの モンスターに ちゅうい!」"},"items":{"2,17":["potion",1]}},"KUSAKI":{"name":"クサキシティ","pad":"T","rows":["TTTTTTTTTTTTTTTTTTTTTTTTTT","T........................T","T..BBBB...BBBB...BBBBBB..T","T..BBBB...BBBB...BBBBBB..T","T..BBBB...BBBB...BBBBBB..T","T...S......S.......D.S...T","T........................T","T..PPPPPPPPPPPPPPPPPPP...T","..PP.....H...........P...T","T.P..................P...T","T.PPPP....FF....PPPPPP...T","T....P..........P........T","T....P..BBBB....P........T","T....P..BBBB....P...FF...T","T....P..BBBB....P........T","T....P....S.....P........T","T....PPPPPPPPPPPP........T","TTTTTTTTTTTTPPTTTTTTTTTTTT"],"warps":{"12,17":["ROUTE1",8,1],"13,17":["ROUTE1",9,1],"0,8":["FOREST",28,10],"19,5":["GYM1",6,9]},"enc":null,"signs":{"4,5":"クサキフレンドリィショップ 「まえに たっている てんいんに はなしかけてね」","11,5":"クサキシティ 「みどりに かこまれた まち」","21,5":"クサキジム リーダー・ツタコ 「くさの ささやきを きけ」","10,15":"トレーナーじゅく 「タイプそうしょうを おぼえよう。ほのおは くさに つよい!」"},"items":{}},"GYM1":{"name":"クサキジム","pad":"#","rows":["############","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["KUSAKI",19,6]},"enc":null,"signs":{},"items":{}},"FOREST":{"name":"モリオのもり","pad":"T","rows":["TTTTTTTTTTTTTTPPTTTTTTTTTTTTTT","T..GGG....T...PP.GGGG....T...T","T..GGG..T.T..TP..GGGG..T.T.G.T","T..GGG..T.T..TP........T.T.G.T","T.......T....TT..TTTT..T...G.T","T..TTTT.TTTT.....T..T..TTTT..T","T..T......GG..TT.T..T........T","T..T..TT..GG..TT.T..TT.TTTT..T","T.....TT..GG..TT.T...........T","T.TTT.TT......TT.TTTTT.TTTT..T","......TT..TT..............T...","T.TTT.....TT..TTTT.GGGG.TT.T.T","T.TTT.TTT.TT..T....GGGG.TT.T.T","T.....TTT.....T..T.GGGG.TT...T","T..GG.TTT..TTTT..T......TT.G.T","T..GG......T.....TTTTTT.....GT","T..GG..TT..T..GG......T..T.GGT","T......TT..T..GG..TT..T..T.GGT","T..TT..TT.....GG..TT.....T...T","T..TT.....TT......TT..TTTT.I.T","T......TT.TT..GGG.....T......T","T..I...TT.....GGG..T..T..GG..T","TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"],"warps":{"29,10":["KUSAKI",1,8],"0,10":["ROUTE2",32,7],"14,0":["NMORI",10,17],"15,0":["NMORI",10,17]},"enc":{"rate":0.13,"tbl":[["KERA",5,8,3],["MAYU",6,8,1],["PATA",5,8,2],["BIRI",5,8,1],["YUME",6,8,1],["TSURU",6,8,2]]},"signs":{},"items":{"3,21":["potion",1],"27,19":["ball",3]}},"ROUTE2":{"name":"2ばんどうろ","pad":"M","rows":["MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM","MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM","MMMMMMMMMMMMMMMMDMMMMMMMMMMMMMMMMM","T..GGG..........P.......GGG......T","T..GGG..........P.......GGG......T","T..GGG....F.....P................T","T...............P.....TT....GG..TT","....PPPPPPPPPPPPPPPPPPPPPPPPPP....","T......GGGG..........GGGG........T","T......GGGG...S......GGGG....I...T","T......GGGG..........GGGG........T","T...F.......TT...........F.......T","T...........TT...................T","TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"],"warps":{"0,7":["HONOO",20,7],"33,7":["FOREST",1,10],"16,2":["CAVE",13,16],"16,12":["BEACH",8,1]},"enc":{"rate":0.13,"tbl":[["PATA",11,14,2],["BIRI",11,13,2],["TSURU",11,14,2],["NEZU",11,13,2],["HONOINU",12,14,1],["NEZURAT",12,14,1]]},"signs":{"14,9":"2ばんどうろ 「きたの どうくつは イワヤマどう」"},"items":{"29,9":["spotion",1]}},"HONOO":{"name":"ホノオタウン","pad":"T","rows":["TTTTTTTTTTPPTTTTTTTTTT","T.........PP.........T","T..BBBB...PP...BBBB..T","T..BBBB...PP...BBBB..T","T..BBD....PP....S....T","T...S.....PP.........T","T.........PP.........T","T..PPPPPPPPPPPPPPPPPP.","T..P......H.........P.","T..P................P.","T..P...BBBB...FF....PT","T..P...BBBB.........PT","T..P...BBBB....S....PT","T..P....S...........PT","T..PPPPPPPPPPPPPPPPPPT","TTTTTTTTTTTTTTTTTTTTTT"],"warps":{"10,0":["ISEKI",8,11],"11,0":["ISEKI",9,11],"21,7":["ROUTE2",1,7],"21,8":["ROUTE2",1,7],"5,4":["GYM2",6,9]},"enc":null,"signs":{"16,4":"ホノオタウン 「かざんの ふもとの あつい まち」","4,5":"ホノオジム リーダー・ヒバナ 「もえつきる ほどの じょうねつを!」","15,12":"いせきの いりぐち は まちの きた。","8,13":"フレンドリィショップは てんいんに はなしかけてね"},"items":{}},"GYM2":{"name":"ホノオジム","pad":"#","rows":["############","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["HONOO",5,5]},"enc":null,"signs":{},"items":{}},"CAVE":{"name":"イワヤマどう","pad":"M","rows":["MMMMMMMMMMMMMMMMMMMMMMMMMMMM","MCCCCCCMMMCCCCCCCCMMMCCCCCCM","MCCCCCCMMMCCCCCCCCMMMCCCIDCM","MCCMMCCCCCCCMMMCCCCCCCCCCCCM","MCCMMCCCCCCCMMMCCCMMMMMCCCCM","MCCCCCCCMMMCCCCCCCMMMMMCCCCM","MCCCCCCCMMMCCCCCCCCCCCCCCCCM","MMMCCCCCCCCCCCMMMCCCCCCCMMMM","MCCCCCCCCCCCCCMMMCCCCCCCCCCM","MCCCCMMMCCCCCCCCCCCMMMCCCCCM","MCCCCMMMCCCCCCCCCCCMMMCCCCCM","MCCCCCCCCCCCCCCCCCCCCCCCCCCM","MCCICCCCCCMMMCCCCCCCCCCCCCCM","MMMMMCCCCCMMMCCCCCCCMMMMMMMM","MCCCCCCCCCCCCCCCCCCCCCCCCCCM","MCCCCCCCCCCCCCCCCCCCCCCCCCCM","MMMMMMMMMMMMMCCMMMMMMMMMMMMM","MMMMMMMMMMMMMCCMMMMMMMMMMMMM"],"warps":{"13,17":["ROUTE2",16,3],"14,17":["ROUTE2",16,3],"25,2":["RYUDO",9,15]},"enc":{"rate":0.11,"tbl":[["KOMORI",13,17,3],["GOROTA",13,17,3],["YUME",15,17,1]]},"signs":{},"items":{"3,12":["potion",2],"24,2":["spotion",1]}},"BEACH":{"name":"すなはまビーチ","pad":"W","rows":["TTTTTTTTPPTTTTTTTTTTTT","T..GGG..PP.....GGG...T","T..GGG..PP.....GGG...T","T.......PP..........DT","T..F....PP....F.....=T","T.......PP..........=T","=.......PP...........W","==..................SW","WW=.......I.........=W","WWW=...............==W","WWWWW............===WW","WWWWWWW.S......====WWW","WWWWWWWWWWWWWWWWWWWWWW","WWWWWWWWWWWWWWWWWWWWWW"],"warps":{"8,0":["ROUTE2",16,11],"9,0":["ROUTE2",16,11],"20,3":["MINATO",1,7]},"enc":{"rate":0.12,"tbl":[["SHIOKAZE",16,19,3],["UZU",16,19,2],["PATA",16,18,1],["KOMORI",16,18,1]]},"signs":{"20,7":"すなはまビーチ 「みなみへ いくと ミナトタウン」","8,11":"なみが きもちいい… でも およげない。"},"items":{"10,8":["spotion",1]}},"MINATO":{"name":"ミナトタウン","pad":"T","rows":["TTTTTTTTTTPPTTTTTTTTTT","T..BBBB.....BBB...BB.T","T..BBBB.....BBB...BB.T","T...S.......D.....S..T","T....................T","....PPPPPPPPPPPPPP....","T...P............P...T",".DparyP..BBBB....P...T","T...P....BBBB....P...T","T...P....BBBB....P...T","T...P.....S......P...T","T...PPPPPPPPPPPPPP...T","T....................T","T..H....FF....BBBB...T","T.............BBBB...T","TTTTTTTTTTTTTTTTTTTTTT"],"warps":{"1,7":["BEACH",19,3],"12,3":["GYM3",6,9],"10,0":["ROUTE4",10,20],"11,0":["ROUTE4",10,20]},"enc":null,"signs":{"4,3":"ミナトタウン 「うみと ともに いきる まち」","18,3":"ミナトジム リーダー・ナギサ 「うずしおの ように!」","10,10":"みなと フレンドリィショップ(てんいんに はなしかけてね)"},"items":{}},"GYM3":{"name":"ミナトジム","pad":"#","rows":["############","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["MINATO",12,4]},"enc":null,"signs":{},"items":{}},"NMORI":{"name":"しずかのもり","pad":"T","rows":["TTTTTTTTTTTTTTTTTTTTT","T...GGG....TT....GG.T","T...GGG....TT....GG.T","T..........TT.......T","T..TT...GG......TT..T","T..TT...GG......TT..T","T.......GG..........T","T..F...........F....T","T...TTTT....TTTT....T","T...........I.......T","T..GG..........GG...T","T..GG....TT....GG...T","T........TT.........T","T..F.....TT....F....T","T................S..T","T...GGG.....GGG.....T","T...GGG.....GGG.....T","T.........PP........T","TTTTTTTTTTPPTTTTTTTTT"],"warps":{"10,18":["FOREST",14,1],"10,17":["FOREST",14,1]},"enc":{"rate":0.13,"tbl":[["FUKURO",8,12,3],["KINOPY",8,12,2],["VOLN",9,12,2],["KERA",8,11,1],["YUME",9,12,1]]},"signs":{"17,14":"しずかのもり 「めったに ひとが こない ふかい もり」"},"items":{"12,9":["spotion",1]}},"RYUDO":{"name":"りゅうのどうくつ","pad":"M","rows":["MMMMMMMMMMMMMMMMMMM","MCCCCCCCMMMCCCCCCCM","MCCCCCCCMMMCCCCCCCM","MCCMMCCCCCCCCCMMCCM","MCCMMCCCCCCCCCMMCCM","MCCCCCCCAACCCCCCCCM","MCCCCCCCAACCCCCCCCM","MMMCCCCCCCCCCCCCMMM","MCCCCCCMMMMMCCCCCCM","MCCCCCCMMMMMCCCCCCM","MCCCCCCCCCCCCCCCCCM","MCCMMMCCCCCCCMMMCCM","MCCMMMCCCCCCCMMMCCM","MCCCCCCCCCCCCCCCCCM","MMMMMMMMCCMMMMMMMMM","MMMMMMMMCCMMMMMMMMM"],"warps":{"9,15":["CAVE",25,3],"8,15":["CAVE",25,3]},"enc":{"rate":0.1,"tbl":[["KOMOROS",28,32,2],["GOROTAN",28,32,1],["IWAGORE",28,32,2],["GAKII",34,38,1]]},"signs":{},"items":{}},"ROUTE4":{"name":"4ばんどうろ","pad":"T","rows":["TTTTTTTTTTPPTTTTTTTTTT","T...GGG...PP...GGG...T","T...GGG...PP...GGG...T","T.........PP.........T","T..TT.....PP.....TT..T","T..TT.....PP.....TT..T","T.........PP.........T","T..PPPPPPPPPPPPPPPP..T","T..P..............P..T","T..P..GGGG..GGGG..P..T","T..P..GGGG..GGGG..P..T","T..P..............P..T","T..P....S.........P..T","T..PPPPPPPP..PPPPPP..T","T........P..P........T","T..GGG...P..P...GGG..T","T..GGG...P..P...GGG..T","T........P..P........T","T.I......PPPP......I.T","T.........PP.........T","T.........PP.........T","TTTTTTTTTTPPTTTTTTTTTT"],"warps":{"10,0":["RAIDEN",11,15],"11,0":["RAIDEN",11,15],"10,21":["MINATO",10,1],"11,21":["MINATO",10,1]},"enc":{"rate":0.13,"tbl":[["VOLN",18,22,3],["HAE",18,22,2],["ZOU",18,22,1],["PATA",18,21,1],["FUKURO",18,22,1]]},"signs":{"8,12":"4ばんどうろ 「きたは ライデンシティ」"},"items":{"2,18":["spotion",1],"19,18":["ball",5]}},"RAIDEN":{"name":"ライデンシティ","pad":"T","rows":["TTTTTTTTTTTTTTTTTTTTTTTT","T..BBBB.....BBBB....S..T","T..BBBB.....BBBB......TT","T...S........D........TT","T....................TTT","T..PPPPPPPPPPPPPPPPP..TT","T..P.............P...TTT","T..P..BBBB..H....P...TTT","T..P..BBBB.......P...DTT","T..P..BBBB.......P...TTT","T..P......S......P...TTT","T..P.............P...TTT","T..PPPPPPPPPPPPPPPP..TTT","T...................TTTT","T..GG....PP....GG...TTTT","T........PP........TTTTT","TTTTTTTTTTPPTTTTTTTTTTTT"],"warps":{"11,3":["GYM4",6,9],"10,16":["ROUTE4",10,1],"11,16":["ROUTE4",10,1],"21,8":["ROUTE5",1,7]},"enc":null,"signs":{"20,1":"ライデンジム リーダー・イカヅチ 「いちげき ひっさつ!」","4,3":"ライデンシティ 「でんきの まち」","10,10":"ライデン フレンドリィショップ(てんいんに はなしかけてね)"},"items":{}},"GYM4":{"name":"ライデンジム","pad":"#","rows":["############","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["RAIDEN",11,4]},"enc":null,"signs":{},"items":{}},"ROUTE5":{"name":"5ばんどうろ","pad":"T","rows":["TTTTTTTTTTTTTTTTTTTTTTTTTT","TTTTTTTTTTTTTTTTTTTTTTTTTT","T..GGG.......GGGG........T","T..GGG.......GGGG........T","T.......TT..............TT","T.......TT....GGGG......TT","...PPPPPPPPPPPPPPPPPPPPP..","..PP....H...........P....T","T.P..S..............P....T","T.PPPP....GGGG....PPP.....","T....P....GGGG....P......T","T....P............P..TT..T","T....P..GGGG..GGGGP..TT..T","T....P..GGGG..GGGGP......T","T..I.PPPPPPPPPPPPPP....I.T","T.........................","TTTTTTTTTTTTTTTTTTTTTTTTTT"],"warps":{"0,7":["RAIDEN",20,8],"1,7":["RAIDEN",20,8],"25,9":["HOSHI",1,8],"25,15":["HOSHI",1,8]},"enc":{"rate":0.13,"tbl":[["MAHOU",24,28,3],["KITSU",24,28,2],["KOKE",24,28,2],["YUME",24,27,1],["FUKURO",24,28,1]]},"signs":{"5,8":"5ばんどうろ 「ひがしは ホシミタウン」"},"items":{"3,14":["spotion",1],"23,14":["ball",5]}},"HOSHI":{"name":"ホシミタウン","pad":"T","rows":["TTTTTTTTTTTTTTTTTTTTTTT","T..BBBB....BBBB....S..T","T..BBBB....BBBB......TT","T...S.......D........TT",".....................TT","T..PPPPPPPPPPPPPPPP...T","T..P............P....TT","T..P..H...BBBB..P....TT",".PPP......BBBB..P....TT","T..P......BBBB..P....TT","T..P.......S....P....TT","T..PPPPPPPPPPPPPP....TT","T....................TT","T..GG....FF....GG....TT","T...................TTT","TTTTTTTTTTPPTTTTTTTTTTT"],"warps":{"0,8":["ROUTE5",24,9],"11,3":["GYM5",6,9],"10,15":["ROUTE6",10,1],"11,15":["ROUTE6",10,1]},"enc":null,"signs":{"19,1":"ホシミジム リーダー・ホシナ 「こころを よみとる」","4,3":"ホシミタウン 「ほしぞらの まち」","11,10":"ホシミ フレンドリィショップ(てんいんに はなしかけてね)"},"items":{}},"GYM5":{"name":"ホシミジム","pad":"#","rows":["############","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["HOSHI",11,4]},"enc":null,"signs":{},"items":{}},"ROUTE6":{"name":"6ばんどうろ","pad":"M","rows":["MMMMMMMMMMPPMMMMMMMMMM","T........MPPM........T","T..GGG...MPPM...GGG..T","T..GGG...MPPM...GGG..T","T........MPPM........T","T...PPPPPPPPPPPPPP...T","T...P............P...T","..CCP....GGGG....PCC..","MCCCC....GGGG....CCCCM","MCCCC............CCCCM","T...P....GGGG....P...T","T...P....GGGG....P...T","T.I.PPPPPPPPPPPPPP.I.T","T........MPPM........T","T..GGG...MPPM........T","T........MPPM........T","MMMMMMMMMMPPMMMMMMMMMM"],"warps":{"10,0":["IWACITY",10,15],"11,0":["IWACITY",10,15],"10,16":["HOSHI",10,14],"11,16":["HOSHI",10,14]},"enc":{"rate":0.14,"tbl":[["IWATO",28,32,3],["DORACO",28,32,2],["GOROTA",28,31,2],["YORU",28,32,1],["KOMORI",28,31,1]]},"signs":{},"items":{"2,12":["spotion",1],"19,12":["ball",5]}},"IWACITY":{"name":"イワヤマシティ","pad":"M","rows":["MMMMMMMMMMMMMMMMMMMMMM","M..BBBB....BBBB....S.M","M..BBBB....BBBB......M","M...S.......D.......MM","M..................MMM","M..PPPPPPPPPPPPPPP..MM","M..P.............P..MM","M..P..H...BBBB...P..MM","MMPP......BBBB...P..MM","M..P......BBBB...P..MM","M..P.......S.....P..MM","M..PPPPPPPPPPPPPPP..MM","M..................MMM","M..CC....CC....CC..MMM","M.......MPPM........MM","MMMMMMMMMPPMMMMMMMMMMM"],"warps":{"0,8":["ROUTE6",10,1],"9,15":["ROUTE6",10,1],"10,15":["ROUTE6",10,1],"11,3":["GYM6",6,9]},"enc":null,"signs":{"19,1":"イワヤマジム リーダー・ガンセキ 「だいちの ちからを みよ!」","4,3":"イワヤマシティ 「いわと りゅうの まち」","11,10":"イワヤマ フレンドリィショップ(てんいんに はなしかけてね)"},"items":{}},"GYM6":{"name":"イワヤマジム","pad":"#","rows":["############","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["IWACITY",11,4]},"enc":null,"signs":{},"items":{}},"ISEKI":{"name":"エメラルドいせき","pad":"M","rows":["MMMMMMMMMMMMMMMMMM","MMMMMMMDMMMMMMMMMM","MCCCCCCCCCCCCCCCCM","MCCCCCCCACCCCCCCCM","MCCCCCCCCCCCCCCCCM","MCCCCCCCCCCCCCCCCM","MCCMMCCCCCCCMMCCCM","MCCMMCCCCCCCMMCCCM","MCCCCCCCCCCCCCCCCM","MCCCCCCCCCCCCCCCCM","MCCCCCCCCCCCCCCCCM","MMMMMMMMCCMMMMMMMM","MMMMMMMMCCMMMMMMMM"],"warps":{"8,12":["HONOO",10,1],"9,12":["HONOO",11,1],"7,1":["LEAGUE",7,12]},"enc":null,"signs":{},"items":{}},"LEAGUE":{"name":"ホウセキリーグ","pad":"#","rows":["###############","#=============#","#=============#","#=============#","#=============#","#=============#","#=============#","#=============#","#=============#","#=============#","#=============#","#=============#","#======D======#","###############"],"warps":{"7,12":["ISEKI",7,2]},"enc":null,"signs":{},"items":{}}};
+const MAPS={"MIDORI":{"name":"ミドリタウン","pad":"T","rows":["TTTTTTTTTTPPTTTTTTTTTT","T.........PP.........T","T..BBBB...PP...BBBB..T","T..BBBB...PP...BBBB..T","T..BBBB...PP...BBBB..T","T...S.....PP.....S...T","T.........PP.........T","T..FF..PPPPPPPP..FF..T","T......P......P......T","T..H...P..BBBBBB.....T","T......P..BBBBBB.....T","T......P..BBBBBB.....T","T......P....S........T","T......P.............T","T....................T","TTTTTTTTTTTTTTTTTTTTTT"],"warps":{"10,0":["ROUTE1",8,26],"11,0":["ROUTE1",9,26]},"enc":null,"signs":{"4,5":"ミドリタウン 「ぼうけんの はじまりの まち」","17,5":"ここは ふつうの みんか。るすの ようだ。","12,12":"コダマ モンスターけんきゅうじょ"},"items":{}},"ROUTE1":{"name":"1ばんどうろ","pad":"T","rows":["TTTTTTTTPPTTTTTTTT","T......TPPT......T","T.GGG..TPPT..GGG.T","T.GGG...PP...GGG.T","T.GGG...PP...GGG.T","T.......PP.......T","T..F....PP....F..T","T.......PP.......T","T..GGGG.PP.GGGG..T","T..GGGG.PP.GGGG..T","T..GGGG.PP.GGGG..T","T.......PP.......T","T....S..PP.......T","T.......PP.......T","T..GGG..PP..GGG..T","T..GGG..PP..GGG..T","T..GGG..PP..GGG..T","T.I.....PP.......T","T.......PP....F..T","T..F....PP.......T","T.......PP.......T","T..GGG..PP..GGG..T","T..GGG..PP..GGG..T","T.......PP.......T","T.......PP.......T","T.......PP.......T","T.......PP.......T","TTTTTTTTPPTTTTTTTT"],"warps":{"8,0":["KUSAKI",12,16],"9,0":["KUSAKI",13,16],"8,27":["MIDORI",10,1],"9,27":["MIDORI",11,1]},"enc":{"rate":0.13,"tbl":[["NEZU",2,4,3],["PATA",2,4,3],["KERA",2,4,3]]},"signs":{"5,12":"1ばんどうろ 「くさむらでは やせいの モンスターに ちゅうい!」"},"items":{"2,17":["potion",1]}},"KUSAKI":{"name":"クサキシティ","pad":"T","rows":["TTTTTTTTTTTTTTTTTTTTTTTTTT","T........................T","T..BBBB...BBBB...BBBBBB..T","T..BBBB...BBBB...BBBBBB..T","T..BBBB...BBBB...BBBBBB..T","T...S......S.......D.S...T","T........................T","T..PPPPPPPPPPPPPPPPPPP...T","..PP.....H...........P...T","T.P..................P...T","T.PPPP....FF....PPPPPP...T","T....P..........P........T","T....P..BBBB....P........T","T....P..BBBB....P...FF...T","T....P..BBBB....P........T","T....P....S.....P........T","T....PPPPPPPPPPPP........T","TTTTTTTTTTTTPPTTTTTTTTTTTT"],"warps":{"12,17":["ROUTE1",8,1],"13,17":["ROUTE1",9,1],"0,8":["FOREST",28,10],"19,5":["GYM1",6,9]},"enc":null,"signs":{"4,5":"クサキフレンドリィショップ 「まえに たっている てんいんに はなしかけてね」","11,5":"クサキシティ 「みどりに かこまれた まち」","21,5":"クサキジム リーダー・ツタコ 「くさの ささやきを きけ」","10,15":"トレーナーじゅく 「タイプそうしょうを おぼえよう。ほのおは くさに つよい!」"},"items":{}},"GYM1":{"name":"クサキジム","pad":"#","rows":["############","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["KUSAKI",19,6]},"enc":null,"signs":{},"items":{}},"FOREST":{"name":"モリオのもり","pad":"T","rows":["TTTTTTTTTTTTTTPPTTTTTTTTTTTTTT","T..GGG....T...PP.GGGG....T...T","T..GGG..T.T..TP..GGGG..T.T.G.T","T..GGG..T.T..TP........T.T.G.T","T.......T....TT..TTTT..T...G.T","T..TTTT.TTTT.....T..T..TTTT..T","T..T......GG..TT.T..T........T","T..T..TT..GG..TT.T..TT.TTTT..T","T.....TT..GG..TT.T...........T","T.TTT.TT......TT.TTTTT.TTTT..T","......TT..TT..............T...","T.TTT.....TT..TTTT.GGGG.TT.T.T","T.TTT.TTT.TT..T....GGGG.TT.T.T","T.....TTT.....T..T.GGGG.TT...T","T..GG.TTT..TTTT..T......TT.G.T","T..GG......T.....TTTTTT.....GT","T..GG..TT..T..GG......T..T.GGT","T......TT..T..GG..TT..T..T.GGT","T..TT..TT.....GG..TT.....T...T","T..TT.....TT......TT..TTTT.I.T","T......TT.TT..GGG.....T......T","T..I...TT.....GGG..T..T..GG..T","TTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"],"warps":{"29,10":["KUSAKI",1,8],"0,10":["ROUTE2",32,7],"14,0":["NMORI",10,17],"15,0":["NMORI",10,17]},"enc":{"rate":0.13,"tbl":[["KERA",5,8,3],["MAYU",6,8,1],["PATA",5,8,2],["BIRI",5,8,1],["YUME",6,8,1],["TSURU",6,8,2]]},"signs":{},"items":{"3,21":["potion",1],"27,19":["ball",3]}},"ROUTE2":{"name":"2ばんどうろ","pad":"M","rows":["MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM","MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM","MMMMMMMMMMMMMMMMDMMMMMMMMMMMMMMMMM","T..GGG..........P.......GGG......T","T..GGG..........P.......GGG......T","T..GGG....F.....P................T","T...............P.....TT....GG..TT","....PPPPPPPPPPPPPPPPPPPPPPPPPP....","T......GGGG..........GGGG........T","T......GGGG...S......GGGG....I...T","T......GGGG..........GGGG........T","T...F.......TT...........F.......T","T...........TT...................T","TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT"],"warps":{"0,7":["HONOO",20,7],"33,7":["FOREST",1,10],"16,2":["CAVE",13,16],"16,12":["BEACH",8,1]},"enc":{"rate":0.13,"tbl":[["PATA",11,14,2],["BIRI",11,13,2],["TSURU",11,14,2],["NEZU",11,13,2],["HONOINU",12,14,1],["NEZURAT",12,14,1]]},"signs":{"14,9":"2ばんどうろ 「きたの どうくつは イワヤマどう」"},"items":{"29,9":["spotion",1]}},"HONOO":{"name":"ホノオタウン","pad":"T","rows":["TTTTTTTTTTPPTTTTTTTTTT","T.........PP.........T","T..BBBB...PP...BBBB..T","T..BBBB...PP...BBBB..T","T..BBD....PP....S....T","T...S.....PP.........T","T.........PP.........T","T..PPPPPPPPPPPPPPPPPP.","T..P......H.........P.","T..P................P.","T..P...BBBB...FF....PT","T..P...BBBB.........PT","T..P...BBBB....S....PT","T..P....S...........PT","T..PPPPPPPPPPPPPPPPPPT","TTTTTTTTTTTTTTTTTTTTTT"],"warps":{"10,0":["ISEKI",8,11],"11,0":["ISEKI",9,11],"21,7":["ROUTE2",1,7],"21,8":["ROUTE2",1,7],"5,4":["GYM2",6,9]},"enc":null,"signs":{"16,4":"ホノオタウン 「かざんの ふもとの あつい まち」","4,5":"ホノオジム リーダー・ヒバナ 「もえつきる ほどの じょうねつを!」","15,12":"いせきの いりぐち は まちの きた。","8,13":"フレンドリィショップは てんいんに はなしかけてね"},"items":{}},"GYM2":{"name":"ホノオジム","pad":"#","rows":["############","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["HONOO",5,5]},"enc":null,"signs":{},"items":{}},"CAVE":{"name":"イワヤマどう","pad":"M","rows":["MMMMMMMMMMMMMMMMMMMMMMMMMMMM","MCCCCCCMMMCCCCCCCCMMMCCCCCCM","MCCCCCCMMMCCCCCCCCMMMCCCIDCM","MCCMMCCCCCCCMMMCCCCCCCCCCCCM","MCCMMCCCCCCCMMMCCCMMMMMCCCCM","MCCCCCCCMMMCCCCCCCMMMMMCCCCM","MCCCCCCCMMMCCCCCCCCCCCCCCCCM","MMMCCCCCCCCCCCMMMCCCCCCCMMMM","MCCCCCCCCCCCCCMMMCCCCCCCCCCM","MCCCCMMMCCCCCCCCCCCMMMCCCCCM","MCCCCMMMCCCCCCCCCCCMMMCCCCCM","MCCCCCCCCCCCCCCCCCCCCCCCCCCM","MCCICCCCCCMMMCCCCCCCCCCCCCCM","MMMMMCCCCCMMMCCCCCCCMMMMMMMM","MCCCCCCCCCCCCCCCCCCCCCCCCCCM","MCCCCCCCCCCCCCCCCCCCCCCCCCCM","MMMMMMMMMMMMMCCMMMMMMMMMMMMM","MMMMMMMMMMMMMCCMMMMMMMMMMMMM"],"warps":{"13,17":["ROUTE2",16,3],"14,17":["ROUTE2",16,3],"25,2":["RYUDO",9,15]},"enc":{"rate":0.11,"tbl":[["KOMORI",13,17,3],["GOROTA",13,17,3],["YUME",15,17,1]]},"signs":{},"items":{"3,12":["potion",2],"24,2":["spotion",1]}},"BEACH":{"name":"すなはまビーチ","pad":"W","rows":["TTTTTTTTPPTTTTTTTTTTTT","T..GGG..PP.....GGG...T","T..GGG..PP.....GGG...T","T.......PP..........DT","T..F....PP....F.....=T","T.......PP..........=T","=.......PP...........W","==..................SW","WW=.......I.........=W","WWW=...............==W","WWWWW............===WW","WWWWWWW.S......====WWW","WWWWWWWWWWWWWWWWWWWWWW","WWWWWWWWWWWWWWWWWWWWWW"],"warps":{"8,0":["ROUTE2",16,11],"9,0":["ROUTE2",16,11],"20,3":["MINATO",1,7]},"enc":{"rate":0.12,"tbl":[["SHIOKAZE",16,19,3],["UZU",16,19,2],["PATA",16,18,1],["KOMORI",16,18,1]]},"signs":{"20,7":"すなはまビーチ 「みなみへ いくと ミナトタウン」","8,11":"なみが きもちいい… でも およげない。"},"items":{"10,8":["spotion",1]}},"MINATO":{"name":"ミナトタウン","pad":"T","rows":["TTTTTTTTTTPPTTTTTTTTTT","T..BBBB.....BBB...BB.T","T..BBBB.....BBB...BB.T","T...S.......D.....S..T","T....................T","....PPPPPPPPPPPPPP....","T...P............P...T",".DparyP..BBBB....P...T","T...P....BBBB....P...T","T...P....BBBB....P...T","T...P.....S......P...T","T...PPPPPPPPPPPPPP...T","T....................T","T..H....FF....BBBB...T","T.............BBBB...T","TTTTTTTTTTTTTTTTTTTTTT"],"warps":{"1,7":["BEACH",19,3],"12,3":["GYM3",6,9],"10,0":["ROUTE4",10,20],"11,0":["ROUTE4",10,20]},"enc":null,"signs":{"4,3":"ミナトタウン 「うみと ともに いきる まち」","18,3":"ミナトジム リーダー・ナギサ 「うずしおの ように!」","10,10":"みなと フレンドリィショップ(てんいんに はなしかけてね)"},"items":{}},"GYM3":{"name":"ミナトジム","pad":"#","rows":["############","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["MINATO",12,4]},"enc":null,"signs":{},"items":{}},"NMORI":{"name":"しずかのもり","pad":"T","rows":["TTTTTTTTTTTTTTTTTTTTT","T...GGG....TT....GG.T","T...GGG....TT....GG.T","T..........TT.......T","T..TT...GG......TT..T","T..TT...GG......TT..T","T.......GG..........T","T..F...........F....T","T...TTTT....TTTT....T","T...........I.......T","T..GG..........GG...T","T..GG....TT....GG...T","T........TT.........T","T..F.....TT....F....T","T................S..T","T...GGG.....GGG.....T","T...GGG.....GGG.....T","T.........PP........T","TTTTTTTTTTPPTTTTTTTTT"],"warps":{"10,18":["FOREST",14,1],"10,17":["FOREST",14,1]},"enc":{"rate":0.13,"tbl":[["FUKURO",8,12,3],["KINOPY",8,12,2],["VOLN",9,12,2],["KERA",8,11,1],["YUME",9,12,1]]},"signs":{"17,14":"しずかのもり 「めったに ひとが こない ふかい もり」"},"items":{"12,9":["spotion",1]}},"RYUDO":{"name":"りゅうのどうくつ","pad":"M","rows":["MMMMMMMMMMMMMMMMMMM","MCCCCCCCMMMCCCCCCCM","MCCCCCCCMMMCCCCCCCM","MCCMMCCCCCCCCCMMCCM","MCCMMCCCCCCCCCMMCCM","MCCCCCCCAACCCCCCCCM","MCCCCCCCAACCCCCCCCM","MMMCCCCCCCCCCCCCMMM","MCCCCCCMMMMMCCCCCCM","MCCCCCCMMMMMCCCCCCM","MCCCCCCCCCCCCCCCCCM","MCCMMMCCCCCCCMMMCCM","MCCMMMCCCCCCCMMMCCM","MCCCCCCCCCCCCCCCCCM","MMMMMMMMCCMMMMMMMMM","MMMMMMMMCCMMMMMMMMM"],"warps":{"9,15":["CAVE",25,3],"8,15":["CAVE",25,3]},"enc":{"rate":0.1,"tbl":[["KOMOROS",28,32,2],["GOROTAN",28,32,1],["IWAGORE",28,32,2]]},"signs":{},"items":{}},"ROUTE4":{"name":"4ばんどうろ","pad":"T","rows":["TTTTTTTTTTPPTTTTTTTTTT","T...GGG...PP...GGG...T","T...GGG...PP...GGG...T","T.........PP.........T","T..TT.....PP.....TT..T","T..TT.....PP.....TT..T","T.........PP.........T","T..PPPPPPPPPPPPPPPP..T","T..P..............P..T","T..P..GGGG..GGGG..P..T","T..P..GGGG..GGGG..P..T","T..P..............P..T","T..P....S.........P..T","T..PPPPPPPP..PPPPPP..T","T........P..P........T","T..GGG...P..P...GGG..T","T..GGG...P..P...GGG..T","T........P..P........T","T.I......PPPP......I.T","T.........PP.........T","T.........PP.........T","TTTTTTTTTTPPTTTTTTTTTT"],"warps":{"10,0":["RAIDEN",11,15],"11,0":["RAIDEN",11,15],"10,21":["MINATO",10,1],"11,21":["MINATO",10,1]},"enc":{"rate":0.13,"tbl":[["VOLN",18,22,3],["HAE",18,22,2],["ZOU",18,22,1],["PATA",18,21,1],["FUKURO",18,22,1]]},"signs":{"8,12":"4ばんどうろ 「きたは ライデンシティ」"},"items":{"2,18":["spotion",1],"19,18":["ball",5]}},"RAIDEN":{"name":"ライデンシティ","pad":"T","rows":["TTTTTTTTTTTTTTTTTTTTTTTT","T..BBBB.....BBBB....S..T","T..BBBB.....BBBB......TT","T...S........D........TT","T....................TTT","T..PPPPPPPPPPPPPPPPP..TT","T..P.............P...TTT","T..P..BBBB..H....P...TTT","T..P..BBBB.......P...DTT","T..P..BBBB.......P...TTT","T..P......S......P...TTT","T..P.............P...TTT","T..PPPPPPPPPPPPPPPP..TTT","T...................TTTT","T..GG....PP....GG...TTTT","T........PP........TTTTT","TTTTTTTTTTPPTTTTTTTTTTTT"],"warps":{"11,3":["GYM4",6,9],"10,16":["ROUTE4",10,1],"11,16":["ROUTE4",10,1],"21,8":["ROUTE5",1,7]},"enc":null,"signs":{"20,1":"ライデンジム リーダー・イカヅチ 「いちげき ひっさつ!」","4,3":"ライデンシティ 「でんきの まち」","10,10":"ライデン フレンドリィショップ(てんいんに はなしかけてね)"},"items":{}},"GYM4":{"name":"ライデンジム","pad":"#","rows":["############","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["RAIDEN",11,4]},"enc":null,"signs":{},"items":{}},"ROUTE5":{"name":"5ばんどうろ","pad":"T","rows":["TTTTTTTTTTTTTTTTTTTTTTTTTT","TTTTTTTTTTTTTTTTTTTTTTTTTT","T..GGG.......GGGG........T","T..GGG.......GGGG........T","T.......TT..............TT","T.......TT....GGGG......TT","...PPPPPPPPPPPPPPPPPPPPP..","..PP....H...........P....T","T.P..S..............P....T","T.PPPP....GGGG....PPP.....","T....P....GGGG....P......T","T....P............P..TT..T","T....P..GGGG..GGGGP..TT..T","T....P..GGGG..GGGGP......T","T..I.PPPPPPPPPPPPPP....I.T","T.........................","TTTTTTTTTTTTTTTTTTTTTTTTTT"],"warps":{"0,7":["RAIDEN",20,8],"1,7":["RAIDEN",20,8],"25,9":["HOSHI",1,8],"25,15":["HOSHI",1,8]},"enc":{"rate":0.13,"tbl":[["MAHOU",24,28,3],["KITSU",24,28,2],["KOKE",24,28,2],["YUME",24,27,1],["FUKURO",24,28,1]]},"signs":{"5,8":"5ばんどうろ 「ひがしは ホシミタウン」"},"items":{"3,14":["spotion",1],"23,14":["ball",5]}},"HOSHI":{"name":"ホシミタウン","pad":"T","rows":["TTTTTTTTTTTTTTTTTTTTTTT","T..BBBB....BBBB....S..T","T..BBBB....BBBB......TT","T...S.......D........TT",".....................TT","T..PPPPPPPPPPPPPPPP...T","T..P............P....TT","T..P..H...BBBB..P....TT",".PPP......BBBB..P....TT","T..P......BBBB..P....TT","T..P.......S....P....TT","T..PPPPPPPPPPPPPP....TT","T....................TT","T..GG....FF....GG....TT","T...................TTT","TTTTTTTTTTPPTTTTTTTTTTT"],"warps":{"0,8":["ROUTE5",24,9],"11,3":["GYM5",6,9],"10,15":["ROUTE6",10,1],"11,15":["ROUTE6",10,1]},"enc":null,"signs":{"19,1":"ホシミジム リーダー・ホシナ 「こころを よみとる」","4,3":"ホシミタウン 「ほしぞらの まち」","11,10":"ホシミ フレンドリィショップ(てんいんに はなしかけてね)"},"items":{}},"GYM5":{"name":"ホシミジム","pad":"#","rows":["############","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["HOSHI",11,4]},"enc":null,"signs":{},"items":{}},"ROUTE6":{"name":"6ばんどうろ","pad":"M","rows":["MMMMMMMMMMPPMMMMMMMMMM","T........MPPM........T","T..GGG...MPPM...GGG..T","T..GGG...MPPM...GGG..T","T........MPPM........T","T...PPPPPPPPPPPPPP...T","T...P............P...T","..CCP....GGGG....PCC..","MCCCC....GGGG....CCCCM","MCCCC............CCCCM","T...P....GGGG....P...T","T...P....GGGG....P...T","T.I.PPPPPPPPPPPPPP.I.T","T........MPPM........T","T..GGG...MPPM........T","T........MPPM........T","MMMMMMMMMMPPMMMMMMMMMM"],"warps":{"10,0":["IWACITY",10,15],"11,0":["IWACITY",10,15],"10,16":["HOSHI",10,14],"11,16":["HOSHI",10,14]},"enc":{"rate":0.14,"tbl":[["IWATO",28,32,3],["DORACO",28,32,2],["GOROTA",28,31,2],["YORU",28,32,1],["KOMORI",28,31,1]]},"signs":{},"items":{"2,12":["spotion",1],"19,12":["ball",5]}},"IWACITY":{"name":"イワヤマシティ","pad":"M","rows":["MMMMMMMMMMMMMMMMMMMMMM","M..BBBB....BBBB....S.M","M..BBBB....BBBB......M","M...S.......D.......MM","M..................MMM","M..PPPPPPPPPPPPPPP..MM","M..P.............P..MM","M..P..H...BBBB...P..MM","MMPP......BBBB...P..MM","M..P......BBBB...P..MM","M..P.......S.....P..MM","M..PPPPPPPPPPPPPPP..MM","M.....................","M..CC....CC....CC..MMM","M.......MPPM........MM","MMMMMMMMMPPMMMMMMMMMMM"],"warps":{"0,8":["ROUTE6",10,1],"9,15":["ROUTE6",10,1],"10,15":["ROUTE6",10,1],"11,3":["GYM6",6,9],"21,12":["ROUTE7",1,6]},"enc":null,"signs":{"19,1":"イワヤマジム リーダー・ガンセキ 「だいちの ちからを みよ!」","4,3":"イワヤマシティ 「いわと りゅうの まち」","11,10":"イワヤマ フレンドリィショップ(てんいんに はなしかけてね)"},"items":{}},"GYM6":{"name":"イワヤマジム","pad":"#","rows":["############","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["IWACITY",11,4]},"enc":null,"signs":{},"items":{}},"ROUTE7":{"name":"7ばんどうろ","pad":"M","rows":["MMMMMMMMMMMMMMMMM","P.....GGG......MM","P..CC.GGG..GGG.MM","P..CC......GGG.MM","P.............PPM","P....GGGG.....PPM","P....GGGG......PM","P.........CC..PPM","P..GGG....CC..MMM","P..GGG........MMM","P.....I.......MMM","MMMMMMMMMMPPMMMMM"],"warps":{"0,1":["IWACITY",20,12],"0,4":["IWACITY",20,12],"15,4":["SORA",1,7],"15,5":["SORA",1,7],"10,11":["SORA",8,1]},"enc":{"rate":0.14,"tbl":[["KAZETA",30,34,3],["PATA",30,33,2],["KOMORI",30,33,2],["SORAPA",30,34,2]]},"signs":{},"items":{"6,10":["spotion",1]}},"SORA":{"name":"ソラのまち","pad":"M","rows":["MMMMMMMMMMMMMMMMMMMM","M......MPPM........M","M..BBBB...BBBB....SM","M..BBBB...BBBB.....M","M...D.......D.....MM","M...S............MMM","M..PPPPPPPPPPPPP..MM","PP.P...........P..MM","M..P..BBBB.H...P..MM","M..P..BBBB....P...MM","M..P.....S....P...MM","M..PPPPPPPPPPPP...MM","M...................","M..CC....CC....C.MMM","MMMMMMMMMMMMMMMMMMMM"],"warps":{"0,7":["ROUTE7",14,5],"8,1":["ROUTE7",10,10],"10,4":["GYM7",6,9],"19,12":["ROUTE8",1,6]},"enc":null,"signs":{"18,2":"ソラジム リーダー・フウカ 「おおぞらの まいを みせてあげる!」","4,5":"ソラのまち 「かぜと つばさの まち」","9,10":"ソラのまち ショップ(てんいんに はなしかけてね)"},"items":{}},"GYM7":{"name":"ソラジム","pad":"#","rows":["############","#==========#","#===HH=====#","#==========#","#=====HH===#","#==========#","#===HH=====#","#==========#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["SORA",10,5]},"enc":null,"signs":{},"items":{}},"ROUTE8":{"name":"8ばんどうろ","pad":"T","rows":["TTTTTTTTTTTTTTTT","P.....TT.......T","P..GGG.TT..GGG.T","P..GGG.....GGG.T","P.........TT...T","P...GGGG..TT...P","P...GGGG......PP","P.........GGG.PP","P..TT.....GGG.MM","P..TT.........MM","P....I........MM","TTTTTTTTTTPPTTTT"],"warps":{"0,1":["SORA",16,12],"0,5":["SORA",16,12],"14,5":["MORI",1,7],"14,6":["MORI",1,7],"10,11":["MORI",8,1]},"enc":{"rate":0.15,"tbl":[["KERA",32,35,3],["MAYU",32,34,2],["BATAFU",33,36,2],["HAE",32,35,2],["AME",32,35,1]]},"signs":{},"items":{"5,10":["spotion",1]}},"MORI":{"name":"モリオクのまち","pad":"T","rows":["TTTTTTTTTTTTTTTTTTTT","T......TPPT........T","T..BBBB...BBBB....ST","T..BBBB...BBBB.....T","T...D.......D.....TT","T...S.............TT","T..PPPPPPPPPPPPP..TT","PP.P...........P..TT","T..P..BBBB.H...P..TT","T..P..BBBB....P...TT","T..P.....S....P...TT","T..PPPPPPPPPPPP...TT","T..................T","T..GG....FF....GG..T","TTTTTTTTTTTTTTTTTTTT"],"warps":{"0,7":["ROUTE8",13,6],"8,1":["ROUTE8",10,10],"10,4":["GYM8",6,9]},"enc":null,"signs":{"18,2":"モリオクジム リーダー・ムシヒコ 「むしの ぐんぜいを みよ!」","4,5":"モリオクのまち 「ふかい もりに かこまれた まち」","9,10":"モリオク ショップ(てんいんに はなしかけてね)"},"items":{}},"GYM8":{"name":"モリオクジム","pad":"#","rows":["############","#==========#","#==TT===TT=#","#==========#","#=====TT===#","#==TT======#","#==========#","#======TT==#","#==========#","#======D===#","#==========#","############"],"warps":{"7,9":["MORI",10,5]},"enc":null,"signs":{},"items":{}},"ISEKI":{"name":"エメラルドいせき","pad":"M","rows":["MMMMMMMMMMMMMMMMMM","MMMMMMMDMMMMMMMMMM","MCCCCCCCCCCCCCCCCM","MCCCCCCCACCCCCCCCM","MCCCCCCCCCCCCCCCCM","MCCCCCCCCCCCCCCCCM","MCCMMCCCCCCCMMCCCM","MCCMMCCCCCCCMMCCCM","MCCCCCCCCCCCCCCCCM","MCCCCCCCCCCCCCCCCM","MCCCCCCCCCCCCCCCCM","MMMMMMMMCCMMMMMMMM","MMMMMMMMCCMMMMMMMM"],"warps":{"8,12":["HONOO",10,1],"9,12":["HONOO",11,1],"7,1":["LEAGUE",7,12]},"enc":null,"signs":{},"items":{}},"LEAGUE":{"name":"ホウセキリーグ","pad":"#","rows":["###############","#=============#","#=============#","#=============#","#=============#","#=============#","#=============#","#=============#","#=============#","#=============#","#=============#","#=============#","#======D======#","###############"],"warps":{"7,12":["ISEKI",7,2]},"enc":null,"signs":{},"items":{}}};
 const TILE=32;
 const WALK='.GPHFC=IDA';
 /* ================= アイテム・ショップ ================= */
@@ -1358,6 +1477,52 @@ const NPCS=[
    intro:'ガンセキ「ようこそ イワヤマジムへ! だいちと りゅうの ちから、うけてみよ!」',
    lose:'ガンセキ「みごと! ロックバッジを さずけよう。リーグは すぐそこだ!」'},
   lines:()=>G.bg>=6?['ガンセキ「6つの バッジ… いよいよ ホウセキリーグだ。けんとうを いのる!」']:[]},
+ /* --- 7ばんどうろ --- */
+ {id:'t_r7a',map:'ROUTE7',x:8,y:5,dir:'down',pal:'villager',sight:3,
+  trainer:{name:'とりつかいの ソウタ',team:[['PATAHAWK',32],['KAZETA',33]],prize:1500,
+   intro:'ソウタ「そらの トレーナーは すばやいぜ!」',lose:'ソウタ「おてんき あめか…」'},
+  lines:['ソウタ「ソラッパは レベル32で ソラオウに しんかするよ」']},
+ {id:'t_r7b',map:'ROUTE7',x:12,y:8,dir:'left',pal:'rival',sight:3,
+  trainer:{name:'バードガールの ヒバリ',team:[['KOMOROS',33],['FUKUROD',34]],prize:1550,
+   intro:'ヒバリ「つばさの かぜを かんじて!」',lose:'ヒバリ「まいおちた…」'},
+  lines:['ヒバリ「ひこうタイプには でんき・いわ・こおり が こわいの」']},
+ /* --- ソラのまち(ひこうジム) --- */
+ {id:'clerk7',map:'SORA',x:10,y:9,pal:'girl',shop:'shop2',
+  lines:['いらっしゃい! ソラのまち ショップです!']},
+ {id:'sovil',map:'SORA',x:14,y:8,pal:'oldman',
+  lines:['この まちの トレーナーは みんな そらを とぶ モンスターの たつじんさ。']},
+ {id:'t_g7a',map:'GYM7',x:4,y:5,dir:'down',pal:'villager',sight:3,
+  trainer:{name:'ジムトレーナーの カイト',team:[['ONI',34],['SORAO',34]],prize:1700,
+   intro:'カイト「おおぞらの ばを かけぬけろ!」',lose:'カイト「まけた…!」'},
+  lines:['カイト「リーダーの フウカは ソラオウの たつじんだ!」']},
+ {id:'lead7',map:'GYM7',x:6,y:2,dir:'down',pal:'girl',
+  trainer:{name:'ジムリーダーの フウカ',team:[['FUKUROD',35],['KAZETA',36],['SORAO',38]],prize:5700,badge:7,
+   intro:'フウカ「ようこそ ソラジムへ! おおぞらの まいを みせてあげる!」',
+   lose:'フウカ「みごとな かぜ! スカイバッジを あげる。リーグまで あと ひとつ!」'},
+  lines:()=>G.bg>=7?['フウカ「7つの バッジ… あなたの たびも おおづめね。がんばって!」']:[]},
+ /* --- 8ばんどうろ --- */
+ {id:'t_r8a',map:'ROUTE8',x:7,y:5,dir:'down',pal:'villager',sight:3,
+  trainer:{name:'むしとりの アミタ',team:[['BATAFU',34],['HAEKING',35]],prize:1700,
+   intro:'アミタ「むしの すばやさ なめんなよ!」',lose:'アミタ「とりにがした…」'},
+  lines:['アミタ「むしタイプは ほのお・ひこう・いわ に よわいぞ」']},
+ {id:'t_r8b',map:'ROUTE8',x:11,y:8,dir:'left',pal:'rival',sight:3,
+  trainer:{name:'ネットもちの コンチュ',team:[['AME',34],['BATAFU',35]],prize:1750,
+   intro:'コンチュ「もりの ぬしに なるのは おれだ!」',lose:'コンチュ「あみが やぶれた…」'},
+  lines:['コンチュ「モリオクジムは このちほう さいごの ジムだ」']},
+ /* --- モリオクのまち(むしジム) --- */
+ {id:'clerk8',map:'MORI',x:10,y:9,pal:'girl',shop:'shop2',
+  lines:['いらっしゃい! モリオク ショップです!']},
+ {id:'movil',map:'MORI',x:14,y:8,pal:'oldman',
+  lines:['この もりには むかしから むしの モンスターが たくさん すんでおるよ。']},
+ {id:'t_g8a',map:'GYM8',x:8,y:6,dir:'down',pal:'villager',sight:3,
+  trainer:{name:'ジムトレーナーの モリゾウ',team:[['HAEKING',36],['BATAFU',36]],prize:1900,
+   intro:'モリゾウ「むしの ぐんぜい、うけてみろ!」',lose:'モリゾウ「まいった!」'},
+  lines:['モリゾウ「リーダー・ムシヒコは このちほう さいきょうきゅう だぞ」']},
+ {id:'lead8',map:'GYM8',x:6,y:2,dir:'down',pal:'boss',
+  trainer:{name:'ジムリーダーの ムシヒコ',team:[['AME',37],['HAEKING',38],['BATAFU',40]],prize:6000,badge:8,
+   intro:'ムシヒコ「ようこそ モリオクジムへ! むしの ぐんぜいの ちからを みせてやる!」',
+   lose:'ムシヒコ「みごと! フォレストバッジを さずけよう。8つの バッジ、おめでとう! いざ ホウセキリーグへ!」'},
+  lines:()=>G.bg>=8?['ムシヒコ「8つの バッジ ぜんせいは! きみは もう いちにんまえの トレーナーだ。リーグで チャンピオンを めざせ!」']:[]},
 ];
 /* ストーリートリガー */
 const TRIGGERS=[
@@ -1404,7 +1569,7 @@ const TRIGGERS=[
 <script>
 /* ================= ゲーム状態 ================= */
 const G={mode:'title',busy:false,msg:null,choice:null,bmenu:null,battle:null,
-  starterIdx:0,vsText:'',vsPicked:[[],[]],time:0,
+  starterIdx:0,vsText:'',vsPicked:[[],[]],time:0,gender:'boy',pname:'ユウキ',
   map:'MIDORI',player:{x:11,y:7,px:11*TILE,py:7*TILE,dir:'down',moving:false,t:0,tx:11,ty:7},
   party:[],box:[],items:{ball:0,potion:0,spotion:0},$:0,bg:0,fl:{df:{}},
   ct:[],sn:[]};
@@ -2076,7 +2241,7 @@ async function openMenu(){
   G.busy=true;
   while(true){
     const i=await choice(['モンスター','バッグ','ずかん','ボックス','レポートをかく','せつめい','とじる'],
-      {title:'メニュー  バッジ'+G.bg+'こ / '+G.$+'円'});
+      {title:G.pname+'  バッジ'+G.bg+'こ / '+G.$+'円'});
     if(i===0){await partyMenu();}
     else if(i===1){await bagMenu();}
     else if(i===2){await zukanMenu();}
@@ -2173,7 +2338,7 @@ function makeSaveCode(){
     bx:G.box.map(m=>[m.id,m.lv,m.exp,m.hp,0]),
     it:[G.items.ball,G.items.potion,G.items.spotion],
     $:G.$,bg:G.bg,fl:G.fl,mp:G.map,x:G.player.x,y:G.player.y,
-    ct:G.ct,sn:G.sn};
+    ct:G.ct,sn:G.sn,gd:G.gender,nm:G.pname};
   return 'MM2.'+btoa(unescape(encodeURIComponent(JSON.stringify(data))));
 }
 function loadSaveCode(code){
@@ -2189,6 +2354,7 @@ function loadSaveCode(code){
     G.$=data.$||0;G.bg=data.bg||0;G.fl=data.fl||{df:{}};
     if(!G.fl.df)G.fl.df={};
     G.ct=data.ct||[];G.sn=data.sn||[];
+    G.gender=data.gd||'boy';G.pname=data.nm||'ユウキ';
     if(!MAPS[data.mp])return false;
     warpTo(data.mp,data.x,data.y);
     return true;
@@ -2238,6 +2404,17 @@ function loadAutoSave(){
   try{return loadSaveCode(localStorage.getItem(SAVE_KEY));}catch(e){return false;}
 }
 function deleteAutoSave(){try{localStorage.removeItem(SAVE_KEY);}catch(e){}}
+function askName(def){
+  return new Promise(res=>{
+    ovl._cancel=()=>{ovl.style.display='none';ovl._cancel=null;res(null);};
+    showOvl('トレーナーの なまえ',def,'なまえを いれて「けってい」を おしてね（6もじまで）。「とじる」で せいべつせんたくに もどります。',(val)=>{
+      ovl.style.display='none';ovl._cancel=null;
+      let n=(val||'').trim().replace(/\s+/g,'').slice(0,6);
+      if(!n)n=def;
+      res(n);
+    });
+  });
+}
 async function saveReport(){
   showOvl('レポートをかく (セーブコード)',makeSaveCode(),
     'このコードを コピーして メモちょう等に ほぞんしてください。タイトルの「つづきから」に はりつけると さいかいできます。');
@@ -2253,9 +2430,10 @@ up:[["....rrrrrr......","...rrrrrrrr.....","..rrrrrrrrrr....","..rrrrrrrrrr...."
 side:[["....rrrrrr......","...rrrrrrrrr....","..rrrrrrrrrr....","..rwwrrrrrr.....","...sssssss......","...sksssss......","...sssssss......","....bbbbbb......","...sbbbbbbb.....","...sbbbbbb......","....bbbbbb......","....bb.bb.......","....kk.kk.......","................","................","................"],["....rrrrrr......","...rrrrrrrrr....","..rrrrrrrrrr....","..rwwrrrrrr.....","...sssssss......","...sksssss......","...sssssss......","....bbbbbb......","...sbbbbbbb.....","...sbbbbbb......","....bbbbbb......","...bb...bb......","...kk...kk......","................","................","................"]]};
 function drawChar(x,y,dir,frame,pal){
   const flip=dir==='left';
-  const key=dir==='up'?'up':(dir==='left'||dir==='right')?'side':'down';
-  const rows=heroFrame64(key,frame?1:0);
-  drawBig(rows,pal||SPRITES.hero.c,x,y,2,flip,true);
+  const key=heroKey(dir);
+  const girl=(pal==null)&&(G.gender==='girl');
+  const rows=heroFrame64(key,frame?1:0,girl);
+  drawBig(rows,pal||(girl?HEROF_PAL:SPRITES.hero.c),x,y,2,flip,true);
 }
 function rrect(x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);
   ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
@@ -2862,7 +3040,19 @@ async function newGame(){
   warpTo('MIDORI',11,7);
   G.mapSign={name:curMap().name,t0:performance.now()};
   await say('コダマ「ようこそ! ここは モンスターと ひとが くらす ホウセキちほう!」');
-  await say('コダマ「わしは モンスターはかせの コダマ。きみの ぼうけんの はじまりに あいぼうを 1ぴき さずけよう!」');
+  await say('コダマ「わしは モンスターはかせの コダマ。まずは きみの ことを おしえてくれ。」');
+  let chosenName=null;
+  while(chosenName===null){
+    await say('コダマ「きみは おとこのこ かな? おんなのこ かな?」');
+    const gi=await choice(['おとこのこ','おんなのこ'],{cancel:false});
+    G.gender=(gi===1)?'girl':'boy';
+    const defName=(G.gender==='girl')?'ヒカリ':'ユウキ';
+    await say('コダマ「きみの なまえを おしえてくれるかな?」');
+    chosenName=await askName(defName);  /* とじる=null → せいべつせんたくへ戻る */
+  }
+  G.pname=chosenName;
+  await say('コダマ「'+G.pname+'…と いうのじゃな! よい なまえじゃ!」');
+  await say('コダマ「さあ '+G.pname+'、ぼうけんの はじまりに あいぼうを 1ぴき さずけよう!」');
   const id=await starterSelect();
   G.fl.starter=id;
   const mon=makeMon(id,5);caught(id);
@@ -2966,7 +3156,8 @@ async function vsMode(){
     'FUKUROD','VOLN','KINOPY','MAGUON','SABO','YUKI','RYUMA',
     'WANIDON','PENKO','ZOU','HAEKING','AME','ONI',
     'MAHOLD','KITSUNE','SAME','KOKE','HONOTORI',
-    'GORAM','DORAGON','YORU','IWATORI','GAKII','EMERODO'];
+    'GORAM','DORAGON','YORU','IWATORI','GAKII',
+    'ISHIDO','KAZETA','DENRAI','SORAO','EMERODO'];
   const items=roster.map(id=>[id,SPECIES[id].name+' ('+SPECIES[id].type+')']);
   const teams=[];
   for(let p=1;p<=2;p++){
@@ -2994,6 +3185,12 @@ document.getElementById('ovlClose').onclick=()=>{
   if(ovl._cancel){ovl._cancel();return;}
   ovl.style.display='none';
 };
+const HEROF={
+down:[["....rrrrrr......","...rrrrrrrr.....","..rrrrrrrrrr....","..rwwrrrrwwr....","..rssssssssr....","..rskssssksr....","..rssssssssr....","..rsaaaaasr.....","...bbbbbbbb.....","..sbbbbbbbbs....",".sbbbbbbbbbbs...",".bbbbbbbbbbbb...","...bb....bb.....","...kk....kk.....","................","................"],["....rrrrrr......","...rrrrrrrr.....","..rrrrrrrrrr....","..rwwrrrrwwr....","..rssssssssr....","..rskssssksr....","..rssssssssr....","..rsaaaaasr.....","...bbbbbbbb.....","..sbbbbbbbbs....",".sbbbbbbbbbbs...",".bbbbbbbbbbbb...","....bb..bb......","....bb..kk......","....kk..........","................"]],
+up:[["....rrrrrr......","...rrrrrrrr.....","..rrrrrrrrrr....","..rrrrrrrrrr....","..rrrrrrrrrr....","..rrrrrrrrrr....","...rrrrrrrr.....","....bbbbbb......","...bbbbbbbb.....","..sbbbbbbbbs....",".sbbbbbbbbbbs...",".bbbbbbbbbbbb...","...bb....bb.....","...kk....kk.....","................","................"],["....rrrrrr......","...rrrrrrrr.....","..rrrrrrrrrr....","..rrrrrrrrrr....","..rrrrrrrrrr....","..rrrrrrrrrr....","...rrrrrrrr.....","....bbbbbb......","...bbbbbbbb.....","..sbbbbbbbbs....",".sbbbbbbbbbbs...",".bbbbbbbbbbbb...","....bb..bb......","....bb..kk......","....kk..........","................"]],
+side:[["....rrrrrr......","...rrrrrrrrr....","..rrrrrrrrrr....","..rwwrrrrrr.....",".rsssssss.......",".rsksssss.......",".rsssssss.......","....bbbbbb......","..rsbbbbbbbb....","...sbbbbbb......","...bbbbbbbb.....","....bb.bb.......","....kk.kk.......","................","................","................"],["....rrrrrr......","...rrrrrrrrr....","..rrrrrrrrrr....","..rwwrrrrrr.....",".rsssssss.......",".rsksssss.......",".rsssssss.......","....bbbbbb......","..rsbbbbbbbb....","...sbbbbbb......","...bbbbbbbb.....","...bb...bb......","...kk...kk......","................","................","................"]]
+};
+const HEROF_PAL={r:'#7a4a2a',s:'#f8c8a0',b:'#e070a0',k:'#222',w:'#f8f8f8',a:'#f0bc94'};
 function showTitle(){
   G.mode='title';
   (async()=>{
