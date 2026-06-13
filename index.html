@@ -47,6 +47,18 @@
     background:#dce8f8;color:#283850;font-size:14px;}
   #ovl button:active{background:#aac4e8;}
   #ovlNote{font-size:12px;color:#666;margin-top:8px;line-height:1.5;}
+  /* === iPhone等の横持ち: ボタンを左右の外側に出して画面を最大化 === */
+  @media (orientation:landscape) and (max-height:600px){
+    #wrap{justify-content:center;padding-top:0;}
+    h1,#hint{display:none;}
+    #game{height:min(99svh, calc((100vw - 300px) / 1.5));width:auto;max-width:none;margin:0;}
+    #pad{position:fixed;inset:0;width:100vw;height:100svh;max-height:none;min-height:0;
+      padding:0;margin:0;background:none;pointer-events:none;display:block;}
+    #pad>*{position:fixed;pointer-events:auto;}
+    #dpad{left:16px;bottom:18px;}
+    #ab{right:20px;bottom:22px;}
+    #startb{left:50%;transform:translateX(-50%);bottom:6px;}
+  }
 </style>
 </head>
 <body>
@@ -2083,13 +2095,14 @@ async function gridMenu(items,label){
 }
 async function movesMenu(mon){
   const items=mon.moves.map(v=>v.name);while(items.length<4)items.push('---');
-  const m={items,index:0,grid:true,moves:mon.moves};G.bmenu=m;
+  let si=mon._lm||0;if(si>=mon.moves.length)si=0;
+  const m={items,index:si,grid:true,moves:mon.moves};G.bmenu=m;
   try{
     while(true){
       const k=await waitKey(['up','down','left','right','a','b']);
       if(k==='left'||k==='right')m.index^=1;
       else if(k==='up'||k==='down')m.index^=2;
-      else if(k==='a'){if(m.index<mon.moves.length)return m.index;}
+      else if(k==='a'){if(m.index<mon.moves.length){mon._lm=m.index;return m.index;}}
       else if(k==='b')return -1;
     }
   }finally{G.bmenu=null;}
@@ -2695,14 +2708,32 @@ async function openMenu(){
   G.busy=false;
 }
 async function summaryView(team,idx){
-  const s={team,idx,page:0};G.summary=s;
+  const s={team,idx,page:0,mcur:0,held:null};G.summary=s;
   try{
     while(true){
       const k=await waitKey(['left','right','up','down','a','b']);
-      if(k==='left')s.idx=(s.idx+team.length-1)%team.length;
-      else if(k==='right')s.idx=(s.idx+1)%team.length;
-      else if(k==='up'||k==='down'||k==='a')s.page^=1;
-      else if(k==='b')return;
+      const m=team[s.idx];
+      if(s.page===1){
+        const n=m.moves.length;
+        if(k==='up')s.mcur=(s.mcur+n-1)%n;
+        else if(k==='down')s.mcur=(s.mcur+1)%n;
+        else if(k==='left'||k==='right'){
+          if(s.held===null){s.idx=(s.idx+(k==='left'?team.length-1:1))%team.length;s.mcur=0;}
+        }
+        else if(k==='a'){
+          if(s.held===null)s.held=s.mcur;
+          else{
+            if(s.held!==s.mcur){const t=m.moves[s.held];m.moves[s.held]=m.moves[s.mcur];m.moves[s.mcur]=t;}
+            s.held=null;
+          }
+        }
+        else if(k==='b'){if(s.held!==null)s.held=null;else{s.page=0;}}
+      }else{
+        if(k==='left')s.idx=(s.idx+team.length-1)%team.length;
+        else if(k==='right')s.idx=(s.idx+1)%team.length;
+        else if(k==='up'||k==='down'||k==='a'){s.page=1;s.mcur=0;s.held=null;}
+        else if(k==='b')return;
+      }
     }
   }finally{G.summary=null;}
 }
@@ -2772,7 +2803,7 @@ async function boxMenu(){
 /* ================= セーブ(レポート) ================= */
 function makeSaveCode(){
   const data={v:2,
-    p:G.party.map(m=>[m.id,m.lv,m.exp,m.hp,m.status||0]),
+    p:G.party.map(m=>[m.id,m.lv,m.exp,m.hp,m.status||0,m.moves.map(v=>v.name)]),
     bx:G.box.map(m=>[m.id,m.lv,m.exp,m.hp,0]),
     it:[G.items.ball,G.items.potion,G.items.spotion],
     $:G.$,bg:G.bg,fl:G.fl,mp:G.map,x:G.player.x,y:G.player.y,
@@ -2785,7 +2816,9 @@ function loadSaveCode(code){
     if(!code.startsWith('MM2.'))return false;
     const data=JSON.parse(decodeURIComponent(escape(atob(code.slice(4)))));
     if(data.v!==2||!Array.isArray(data.p)||!data.p.length)return false;
-    const mk=e=>{const m=makeMon(e[0],e[1]);m.exp=e[2];m.dexp=e[2];m.hp=Math.max(0,Math.min(m.maxhp,e[3]));m.status=e[4]||null;return m;};
+    const mk=e=>{const m=makeMon(e[0],e[1]);m.exp=e[2];m.dexp=e[2];m.hp=Math.max(0,Math.min(m.maxhp,e[3]));m.status=e[4]||null;
+      if(Array.isArray(e[5])){const ord=e[5];m.moves.sort((a,b)=>{let ia=ord.indexOf(a.name),ib=ord.indexOf(b.name);if(ia<0)ia=99;if(ib<0)ib=99;return ia-ib;});}
+      return m;};
     G.party=data.p.map(mk);
     G.box=(data.bx||[]).map(mk);
     G.items={ball:data.it[0]||0,potion:data.it[1]||0,spotion:data.it[2]||0};
@@ -3416,6 +3449,10 @@ function rSummary(){
     for(let i=0;i<4;i++){
       const y=66+i*57;
       const mv=m.moves[i];
+      if(i<m.moves.length){
+        if(s.held===i){ctx.fillStyle='rgba(248,208,32,0.35)';rrect(X+6,y-4,W-12,52,8);ctx.fill();}
+        if(i===s.mcur){ctx.strokeStyle=s.held===null?'#3878d8':'#f0a020';ctx.lineWidth=3;rrect(X+6,y-4,W-12,52,8);ctx.stroke();}
+      }
       if(!mv){
         txt('---',X+86,y+8,'#a8a8b0','bold 15px sans-serif');
         continue;
@@ -3432,7 +3469,10 @@ function rSummary(){
   }
   /* 下部ヒント */
   ctx.fillStyle='#103838';ctx.fillRect(0,298,480,22);
-  txtS('◀▶ モンスターきりかえ   A ページきりかえ   B もどる',56,301,'#c8e8e0','12px sans-serif');
+  const sh=s.page===1
+    ?(s.held===null?'▲▼ えらぶ   A わざを もちあげる   B のうりょくへ':'▲▼ いどう   A ここに いれかえ   B やめる')
+    :'◀▶ モンスターきりかえ   A わざ・ならびかえ   B もどる';
+  txtS(sh,12,301,'#c8e8e0','12px sans-serif');
 }
 function render(){
   ctx.clearRect(0,0,480,320);
