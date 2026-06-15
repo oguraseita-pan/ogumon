@@ -3555,7 +3555,22 @@ function drawTile(t,x,y,mapId,ci,cj){
         ctx.fillStyle='#a6d4f0';ctx.fillRect(bx,y+17,9,9);
         ctx.fillStyle='#cdebff';ctx.fillRect(bx,y+17,4,4);
         ctx.fillStyle='#34536f';ctx.fillRect(bx+4,y+17,1,9);ctx.fillRect(bx,y+21,9,1);}break;}
-    case 'D':{ctx.fillStyle='#e8dfcb';ctx.fillRect(x,y,TILE,TILE);
+    case 'D':{
+      if(tile(ci,cj-1)==='M'){
+        /* 山壁に埋まったドア=洞窟の入口: 岩のアーチ開口として描画 */
+        ctx.fillStyle='#7a6a54';ctx.fillRect(x,y,TILE,TILE);
+        ctx.fillStyle='#8e7e64';ctx.fillRect(x,y,TILE,4);
+        ctx.fillStyle='#62523e';ctx.fillRect(x,y+TILE-4,TILE,4);
+        ctx.fillStyle='#8a7860';ctx.fillRect(x+2,y+6,9,6);ctx.fillRect(x+21,y+6,9,6);
+        var ccx=x+16,cat=y+11,cr=9;
+        ctx.fillStyle='#3a2e20';ctx.beginPath();ctx.moveTo(ccx-cr-2,y+TILE);ctx.lineTo(ccx-cr-2,cat);ctx.arc(ccx,cat,cr+2,Math.PI,0,false);ctx.lineTo(ccx+cr+2,y+TILE);ctx.closePath();ctx.fill();
+        var cgr=ctx.createLinearGradient(0,cat-cr,0,y+TILE);cgr.addColorStop(0,'#2a1d12');cgr.addColorStop(1,'#0b0704');
+        ctx.fillStyle=cgr;ctx.beginPath();ctx.moveTo(ccx-cr,y+TILE);ctx.lineTo(ccx-cr,cat);ctx.arc(ccx,cat,cr,Math.PI,0,false);ctx.lineTo(ccx+cr,y+TILE);ctx.closePath();ctx.fill();
+        ctx.fillStyle='rgba(74,54,32,0.5)';ctx.beginPath();ctx.ellipse(ccx,cat+3,5,4,0,0,7);ctx.fill();
+        ctx.strokeStyle='rgba(150,132,104,0.85)';ctx.lineWidth=2;ctx.beginPath();ctx.arc(ccx,cat,cr+1,Math.PI*1.04,Math.PI*1.42,false);ctx.stroke();
+        break;
+      }
+      ctx.fillStyle='#e8dfcb';ctx.fillRect(x,y,TILE,TILE);
       ctx.fillStyle='#c0402e';ctx.fillRect(x,y,TILE,9);
       ctx.fillStyle='#dc6850';ctx.fillRect(x,y,TILE,3);
       ctx.fillStyle='#8c2014';ctx.fillRect(x,y+7,TILE,2);
